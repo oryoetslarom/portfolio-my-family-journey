@@ -6,7 +6,7 @@
     --accent-color: #ff80ab;
 }
 
-/* עיצוב כללי של דף האינטרנט (גופן, צבע רקע וכיוון כתיבה) */
+/* עיצוב כללי של דף האינטרנט */
 body {
     font-family: 'Assistant', sans-serif;
     background-color: #fafafa;
@@ -16,71 +16,67 @@ body {
     overflow-x: hidden;
 }
 
-/* עיצוב רצועת הכותרת העליונה (הגרדיאנט הוורוד-כחול) */
+/* עיצוב רצועת הכותרת העליונה */
 header {
     background: linear-gradient(135deg, var(--soft-pink), var(--soft-blue));
-    padding: 100px 20px;
+    padding: 80px 20px;
     text-align: center;
 }
 
-/* עיצוב כותרת הלוגו הגדולה באנגלית - Larom Family */
+/* עיצוב כותרת הלוגו הגדולה */
 header h1 {
     font-family: 'Amatic SC', cursive;
-    font-size: 200px;
+    font-size: clamp(80px, 15vw, 200px); /* גודל גמיש שמתאים את עצמו למסך */
     color: #ec407a;
     margin: 0;
 }
 
-/* עיצוב משפט תת-הכותרת - "הסיפור של אור, דנה וניב לרום" */
+/* עיצוב משפט תת-הכותרת */
 header .subtitle {
     font-family: 'Varela Round', sans-serif; 
-    font-size: 40px;
+    font-size: clamp(24px, 5vw, 40px);
     margin-top: 20px;
 }
 
-/* התיבה הלבנה המרכזית שמכילה את כל התוכן */
+/* התיבה הלבנה המרכזית */
 .container {
     max-width: 1200px;
-    margin: -40px auto 50px; /* גורם לתיבה "לעלות" קצת על ה-header */
+    margin: -40px auto 50px;
     background: white;
-    padding: 30px 60px 60px 60px;
+    padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    width: 90%;
 }
 
-/* הכותרת בתוך התיבה הלבנה - "המסע שלנו" */
+/* הכותרת בתוך התיבה הלבנה */
 .main-title {
-    font-size: 56px;
+    font-size: clamp(32px, 8vw, 56px);
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     color: var(--dark-text);
-    width: 100%;
-    display: block;
 }
 
-/* עיצוב אזור הפתיחה בתוך התיבה הלבנה (הכותרת וההסבר) */
+/* אזור הפתיחה */
 .intro {
-    text-align: center;    /* מיישר את כל הטקסט שבתוך הדיב לאמצע */
-    margin-bottom: 50px;   /* יוצר מרווח נעים לפני שציר הזמן מתחיל */
-    width: 100%;           /* מבטיח שהאזור תופס את כל רוחב התיבה */
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-/* עיצוב ספציפי לפסקה שמתחת לכותרת "המסע שלנו" */
 .intro p {
-    font-size: 18px;       /* הגדלת הגופן של ההסבר לנוחות קריאה */
-    max-width: 800px;      /* מונע מהשורה להיות ארוכה מדי */
-    margin: 0 auto;        /* ממרכז את הפסקה עצמה אם הגדרנו לה רוחב מקסימלי */
-    line-height: 1.6;      /* מוסיף מרווח נעים בין השורות */
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
 /* הגדרת אזור ציר הזמן */
 .timeline {
     position: relative;
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
-/* הקו הוורוד האנכי שעובר באמצע ציר הזמן */
+/* הקו הוורוד האנכי */
 .center-line {
     position: absolute;
     left: 50%;
@@ -91,23 +87,24 @@ header .subtitle {
     transform: translateX(-50%);
 }
 
-/* הגדרת השורה בציר הזמן (חלוקה ל-3 עמודות: טקסט, קו ותמונה) */
+/* הגדרת השורה בציר הזמן */
 .timeline-row {
     display: grid;
     grid-template-columns: 1fr 80px 1fr;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
+    position: relative;
 }
 
-/* עיצוב כרטיסי הטקסט הלבנים בתוך ציר הזמן */
+/* כרטיסי הטקסט */
 .content-card {
     background: #fff;
-    padding: 30px;
+    padding: 25px;
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.06);
 }
 
-/* עיצוב התמונות שעומדות לצד הטקסט בציר הזמן */
+/* תמונות בציר הזמן */
 .standalone-img {
     width: 100%;
     max-width: 380px;
@@ -118,23 +115,21 @@ header .subtitle {
     margin: 0 auto;
 }
 
-/* העמודה הדימיונית שבה נמצאת הנקודה על הקו */
+/* הנקודה על הקו */
 .dot-column {
     display: flex;
     justify-content: center;
     z-index: 5;
 }
 
-/* העיגול הוורוד הקטן שיושב על הקו המרכזי */
 .timeline-dot {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     background: white;
     border: 4px solid var(--accent-color);
     border-radius: 50%;
 }
 
-/* עיצוב התאריך מעל כל כותרת אירוע (למשל: 04.05.2023) */
 .date {
     color: var(--accent-color);
     font-weight: bold;
@@ -143,122 +138,95 @@ header .subtitle {
     margin-bottom: 10px;
 }
 
-/* כותרת גלריית התמונות למטה */
-.gallery-title { 
-    text-align: center; 
-    margin-top: 80px; 
-}
-
-/* רשת התמונות של הגלריה (סידור אוטומטי של תמונות) */
+/* גלריה */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     margin-top: 40px;
 }
 
-/* עיצוב כרטיס תמונה בודד בגלריה */
 .photo-card { 
     border-radius: 15px; 
     overflow: hidden; 
     position: relative; 
 }
 
-/* מוודא שהתמונות בגלריה ימלאו את הכרטיס */
 .photo-card img { 
     width: 100%; 
+    height: 300px;
+    object-fit: cover; /* גורם לתמונות להיות בגודל אחיד בגלריה */
     display: block; 
 }
 
-/* הכיתוב שמופיע על גבי התמונות בגלריה (התווית הלבנה) */
 .photo-label {
     position: absolute; 
     bottom: 10px; 
     left: 10px; 
     right: 10px;
-    background: rgba(255,255,255,0.85); 
-    padding: 10px; 
+    background: rgba(255,255,255,0.9); 
+    padding: 8px; 
     text-align: center;
     font-family: 'Amatic SC', cursive; 
-    font-size: 26px; 
+    font-size: 24px; 
     border-radius: 10px;
 }
 
-/* עיצוב אזור תחתית העמוד (פוטר) */
 footer { 
     text-align: center; 
-    padding: 60px; 
+    padding: 40px; 
     background: #f9f9f9; 
 }
 
-/* עיצוב כפתור האינסטגרם הצבעוני */
 .insta-btn {
     display: inline-block; 
     padding: 12px 30px;
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #bc1888);
-    color: white; 
+    color: white !important; 
     text-decoration: none; 
     border-radius: 50px; 
     font-weight: bold;
 }
 
-/* התאמות עיצוב מיוחדות לטלפונים ניידים (מסכים קטנים) */
+/* --- התאמות לטלפונים ניידים --- */
 @media (max-width: 768px) {
-    .center-line { left: 25px; } /* מזיז את הקו הצידה בנייד */
-    .timeline-row { grid-template-columns: 50px 1fr; gap: 10px; } /* הופך את התצוגה לעמודה אחת */
-    .dot-column { grid-column: 1; }
-    .text-column { grid-column: 2; }
-    .image-column { grid-column: 2; margin-top: 20px; }
-    .standalone-img { max-width: 100%; }
+    header { padding: 50px 10px; }
 
-    /* התאמות למסכים קטנים (טלפונים) */
-@media (max-width: 768px) {
-    
-    /* הקטנת הכותרות הענקיות כדי שלא יצאו מהמסך */
-    header h1 {
-        font-size: 80px; /* במקום 200px */
+    .center-line {
+        display: none; /* מעלים את הקו בנייד למראה נקי יותר */
     }
 
-    header .subtitle {
-        font-size: 28px; /* במקום 60px */
-    }
-
-    /* צמצום רווחים בתיבה הלבנה */
-    .container {
-        padding: 20px;
-        margin-top: -20px;
-        width: 95%; /* שהתיבה לא תידבק לקצוות המסך */
-    }
-
-    /* הפיכת ציר הזמן לטור אחד במקום שורות */
     .timeline-row {
         display: flex;
-        flex-direction: column; /* מסדר את הטקסט והתמונה אחד מתחת לשני */
+        flex-direction: column !important; /* מסדר הכל בטור אחד */
         gap: 20px;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
+        text-align: center;
     }
 
-    /* הזזת הקו הוורוד הצידה (כי כבר אין אמצע) */
-    .center-line {
-        left: 20px;
-        transform: none;
-    }
-
-    /* הזזת הנקודות שיתיישרו עם הקו בצד */
     .dot-column {
-        justify-content: flex-start;
-        padding-right: 10px;
+        display: none; /* מעלים את הנקודות בנייד */
     }
 
-    /* שהתמונות יתפסו את כל רוחב המסך בנייד */
+    .container {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .content-card {
+        padding: 20px;
+    }
+
     .standalone-img {
         max-width: 100%;
     }
 
-    /* סידור הגלריה ל-2 תמונות בשורה במקום 3-4 */
     .gallery {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 תמונות בשורה בנייד */
         gap: 10px;
     }
-}
+    
+    .photo-card img {
+        height: 200px;
+    }
 }
