@@ -4,7 +4,7 @@
     --soft-blue: #e3f2fd;
     --dark-text: #455a64;
     --accent-color: #ff80ab;
-    /* משתנה לשליטה ברווח מעל הגלריות */
+    /* משתנה חדש לשליטה ברווח מעל הגלריות - ככל שתשימי מספר שלילי גדול יותר, זה יעלה יותר למעלה */
     --galleries-gap: -20px; 
 }
 
@@ -68,7 +68,7 @@ header .subtitle {
     line-height: 1.6;
 }
 
-/* ציר זמן - גרסת מחשב */
+/* ציר זמן */
 .timeline {
     position: relative;
     padding: 10px 0;
@@ -148,7 +148,8 @@ header .subtitle {
     margin-bottom: 10px;
 }
 
-/* גלריות */
+/* --- הגדרות הגלריות הבסיסיות --- */
+
 .galleries-container {
     display: flex !important;
     justify-content: center;
@@ -178,7 +179,9 @@ h2 {
     scrollbar-width: none;
 }
 
-.slider::-webkit-scrollbar { display: none; }
+.slider::-webkit-scrollbar {
+    display: none;
+}
 
 .slider img {
     flex: 1 0 100%; 
@@ -204,6 +207,7 @@ h2 {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 footer { 
@@ -220,59 +224,18 @@ footer {
         flex-wrap: nowrap !important;
         gap: 20px !important;
     }
+
     .slider-wrapper {
         flex: 1 !important;
         max-width: 380px !important;
+        min-width: 0 !important;
         margin-bottom: 0 !important;
     }
 }
 
-/* --- הגדרות לנייד (עד 900 פיקסלים) - עדכון סופי --- */
+/* --- הגדרות לנייד (עד 900 פיקסלים) - תיקון נקודתי --- */
 @media (max-width: 900px) {
-    header h1 { font-size: 80px; }
-    
-    .container {
-        width: 92%;
-        margin-top: -20px;
-    }
-
-    /* תיקון ציר הזמן לטור אחד */
-    .timeline-row {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 40px;
-    }
-
-    /* הסתרת אלמנטים שחוסמים מקום בנייד */
-    .center-line, .dot-column {
-        display: none;
-    }
-
-    /* סידור אחיד לכל השורות (תמונה ואז טקסט) */
-    .timeline-row.row-left, .timeline-row.row-right {
-        flex-direction: column;
-    }
-
-    /* גורם לתמונה להופיע מעל הטקסט בכל מצב */
-    .image-column { order: 1; }
-    .text-column { order: 2; }
-
-    .text-column, .image-column {
-        padding: 10px 0;
-    }
-
-    .content-card {
-        width: 100%;
-        max-width: 100%;
-        padding: 20px;
-        min-height: auto;
-    }
-
-    .standalone-img {
-        max-width: 100%;
-    }
-
-    /* התאמת גלריות לנייד */
+    /* גלריות */
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
@@ -280,6 +243,51 @@ footer {
 
     .slider-wrapper {
         width: 100% !important;
-        max-width: 350px !important;
+        max-width: 400px !important;
+        flex: none !important;
+    }
+
+    /* ציר זמן - הופך לטור אחד במקום גריד צפוף */
+    .timeline-row {
+        display: flex !important;
+        flex-direction: column !important;
+        margin-bottom: 60px;
+    }
+
+    /* סידור: תמונה תמיד מעל הטקסט בנייד */
+    .image-column {
+        order: 1 !important;
+        padding: 10px 0 !important;
+    }
+    
+    .text-column {
+        order: 2 !important;
+        padding: 10px 0 !important;
+    }
+
+    /* הסתרת הקו והנקודה כי אין להם מקום בטור אחד */
+    .center-line, .dot-column {
+        display: none !important;
+    }
+
+    /* התאמת הכרטיסיות והתמונות לרוחב המסך */
+    .content-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        padding: 25px 20px !important;
+    }
+
+    .standalone-img {
+        max-width: 100% !important;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 80px;
     }
 }
