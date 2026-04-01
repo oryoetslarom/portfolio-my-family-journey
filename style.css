@@ -237,6 +237,10 @@ footer {
 
 /* --- הגדרות לנייד (עד 900 פיקסלים) --- */
 @media (max-width: 900px) {
+    /* כותרת */
+    header h1 { font-size: 80px; }
+
+    /* גלריות בנייד */
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
@@ -248,47 +252,58 @@ footer {
         flex: none !important;
     }
 
-    /* תיקון ציר הזמן לנייד */
+    /* ציר זמן בנייד - הזזת הקו לימין והפיכה לטור אחד */
+    .center-line {
+        left: 30px !important; /* מזיז את הקו לצד ימין */
+        transform: none !important;
+    }
+
     .timeline-row {
-        display: flex !important; /* הופך את השורה לטור אחד */
-        flex-direction: column !important;
+        display: grid !important;
+        grid-template-columns: 60px 1fr !important; /* עמודת נקודה ועמודת תוכן */
         margin-bottom: 40px;
+        width: 100%;
     }
 
-    .center-line, .dot-column {
-        display: none !important; /* מסתיר את הנקודות והקו שתופסים מקום */
+    .dot-column {
+        grid-column: 1;
+        grid-row: 1 / span 2; /* הנקודה תופסת את הצד של כל השורה */
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 25px;
     }
 
+    .text-column, .image-column {
+        grid-column: 2;
+        width: 100% !important;
+        padding: 5px 10px !important;
+        justify-content: flex-start !important;
+    }
+
+    /* בתוך כל שורה - הטקסט יופיע מעל התמונה */
     .timeline-row.row-left, .timeline-row.row-right {
-        flex-direction: column !important;
+        display: grid !important;
     }
+    
+    .text-column { order: 1; }
+    .image-column { order: 2; }
 
-    .image-column {
-        order: 1 !important; /* תמונה ראשונה בטור */
-        padding: 10px 0 !important;
-    }
-
-    .text-column {
-        order: 2 !important; /* טקסט שני בטור */
-        padding: 10px 0 !important;
-    }
-
+    /* התאמת הכרטיסיות */
     .content-card {
         width: 100% !important;
         max-width: 100% !important;
-        min-height: auto !important;
         padding: 20px !important;
+        min-height: auto !important;
+        text-align: right !important;
     }
 
     .standalone-img {
         max-width: 100% !important;
+        margin: 10px 0 !important;
     }
     
     .container {
         width: 95%;
-    }
-
-    header h1 {
-        font-size: 80px; /* הקטנה של הכותרת רק לנייד */
+        padding: 5px;
     }
 }
