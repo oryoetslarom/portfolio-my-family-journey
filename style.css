@@ -237,65 +237,21 @@ footer {
 
 /* --- הגדרות לנייד (עד 900 פיקסלים) --- */
 @media (max-width: 900px) {
-    /* כותרת */
-    header h1 { font-size: 80px; }
-
-    /* גלריות */
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
     }
+
     .slider-wrapper {
         width: 100% !important;
         max-width: 400px !important;
         flex: none !important;
     }
 
-    /* תיקון ציר הזמן - הזזת הקו לימין והצגת הנקודות */
-    .center-line {
-        left: 30px !important;
-        transform: none !important;
-    }
-
     .timeline-row {
-        display: grid !important;
-        /* עמודה 1 לנקודה (60px), עמודה 2 לתוכן (השאר) */
-        grid-template-columns: 60px 1fr !important;
-        margin-bottom: 40px;
+        grid-template-columns: 1fr 40px 1fr;
     }
-
-    /* הנקודה תמיד בעמודה הראשונה */
-    .dot-column {
-        grid-column: 1 !important;
-        grid-row: 1 / span 3 !important; /* גורם לנקודה להיות בצד של כל התוכן */
-        padding-top: 25px;
-    }
-
-    /* הטקסט והתמונה תמיד בעמודה השנייה */
-    .text-column, .image-column {
-        grid-column: 2 !important;
-        width: 100% !important;
-        padding: 5px 10px !important;
-        justify-content: flex-start !important;
-    }
-
-    /* סידור פנימי: קודם טקסט ואז תמונה */
-    .text-column { order: 1 !important; }
-    .image-column { order: 2 !important; }
-
-    .content-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        text-align: right !important;
-        padding: 20px !important;
-        min-height: auto !important;
-    }
-
-    .standalone-img {
-        max-width: 100% !important;
-        margin: 10px 0 !important;
-    }
-
+    
     .container {
         width: 95%;
     }
