@@ -4,7 +4,7 @@
     --soft-blue: #e3f2fd;
     --dark-text: #455a64;
     --accent-color: #ff80ab;
-    /* משתנה חדש לשליטה ברווח מעל הגלריות - ככל שתשימי מספר שלילי גדול יותר, זה יעלה יותר למעלה */
+    /* משתנה לשליטה ברווח מעל הגלריות */
     --galleries-gap: -20px; 
 }
 
@@ -68,7 +68,7 @@ header .subtitle {
     line-height: 1.6;
 }
 
-/* ציר זמן */
+/* ציר זמן - גרסת מחשב */
 .timeline {
     position: relative;
     padding: 10px 0;
@@ -148,18 +148,15 @@ header .subtitle {
     margin-bottom: 10px;
 }
 
-/* --- הגדרות הגלריות הבסיסיות --- */
-
+/* גלריות */
 .galleries-container {
     display: flex !important;
     justify-content: center;
     padding: 20px;
     max-width: 1200px;
-    /* שינוי כאן: המרווח העליון נשלט על ידי המשתנה למעלה */
     margin: var(--galleries-gap) auto 40px; 
 }
 
-/* ביטול המרווח האוטומטי של הכותרת h2 כדי שלא ידחוף למטה */
 h2 {
     margin-top: 0 !important;
     margin-bottom: 10px !important;
@@ -181,9 +178,7 @@ h2 {
     scrollbar-width: none;
 }
 
-.slider::-webkit-scrollbar {
-    display: none;
-}
+.slider::-webkit-scrollbar { display: none; }
 
 .slider img {
     flex: 1 0 100%; 
@@ -209,7 +204,6 @@ h2 {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 footer { 
@@ -226,17 +220,59 @@ footer {
         flex-wrap: nowrap !important;
         gap: 20px !important;
     }
-
     .slider-wrapper {
         flex: 1 !important;
         max-width: 380px !important;
-        min-width: 0 !important;
         margin-bottom: 0 !important;
     }
 }
 
-/* --- הגדרות לנייד (עד 900 פיקסלים) --- */
+/* --- הגדרות לנייד (עד 900 פיקסלים) - עדכון סופי --- */
 @media (max-width: 900px) {
+    header h1 { font-size: 80px; }
+    
+    .container {
+        width: 92%;
+        margin-top: -20px;
+    }
+
+    /* תיקון ציר הזמן לטור אחד */
+    .timeline-row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    /* הסתרת אלמנטים שחוסמים מקום בנייד */
+    .center-line, .dot-column {
+        display: none;
+    }
+
+    /* סידור אחיד לכל השורות (תמונה ואז טקסט) */
+    .timeline-row.row-left, .timeline-row.row-right {
+        flex-direction: column;
+    }
+
+    /* גורם לתמונה להופיע מעל הטקסט בכל מצב */
+    .image-column { order: 1; }
+    .text-column { order: 2; }
+
+    .text-column, .image-column {
+        padding: 10px 0;
+    }
+
+    .content-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .standalone-img {
+        max-width: 100%;
+    }
+
+    /* התאמת גלריות לנייד */
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
@@ -244,15 +280,6 @@ footer {
 
     .slider-wrapper {
         width: 100% !important;
-        max-width: 400px !important;
-        flex: none !important;
-    }
-
-    .timeline-row {
-        grid-template-columns: 1fr 40px 1fr;
-    }
-    
-    .container {
-        width: 95%;
+        max-width: 350px !important;
     }
 }
