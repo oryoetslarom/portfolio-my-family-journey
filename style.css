@@ -155,9 +155,11 @@ header .subtitle {
     justify-content: center;
     padding: 20px;
     max-width: 1200px;
+    /* שינוי כאן: המרווח העליון נשלט על ידי המשתנה למעלה */
     margin: var(--galleries-gap) auto 40px; 
 }
 
+/* ביטול המרווח האוטומטי של הכותרת h2 כדי שלא ידחוף למטה */
 h2 {
     margin-top: 0 !important;
     margin-bottom: 10px !important;
@@ -233,9 +235,8 @@ footer {
     }
 }
 
-/* --- הגדרות לנייד (עד 900 פיקסלים) - תיקון נקודתי --- */
+/* --- הגדרות לנייד (עד 900 פיקסלים) --- */
 @media (max-width: 900px) {
-    /* גלריות */
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
@@ -247,35 +248,36 @@ footer {
         flex: none !important;
     }
 
-    /* ציר זמן - הופך לטור אחד במקום גריד צפוף */
+    /* תיקון ציר הזמן לנייד */
     .timeline-row {
-        display: flex !important;
+        display: flex !important; /* הופך את השורה לטור אחד */
         flex-direction: column !important;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
     }
 
-    /* סידור: תמונה תמיד מעל הטקסט בנייד */
-    .image-column {
-        order: 1 !important;
-        padding: 10px 0 !important;
-    }
-    
-    .text-column {
-        order: 2 !important;
-        padding: 10px 0 !important;
-    }
-
-    /* הסתרת הקו והנקודה כי אין להם מקום בטור אחד */
     .center-line, .dot-column {
-        display: none !important;
+        display: none !important; /* מסתיר את הנקודות והקו שתופסים מקום */
     }
 
-    /* התאמת הכרטיסיות והתמונות לרוחב המסך */
+    .timeline-row.row-left, .timeline-row.row-right {
+        flex-direction: column !important;
+    }
+
+    .image-column {
+        order: 1 !important; /* תמונה ראשונה בטור */
+        padding: 10px 0 !important;
+    }
+
+    .text-column {
+        order: 2 !important; /* טקסט שני בטור */
+        padding: 10px 0 !important;
+    }
+
     .content-card {
         width: 100% !important;
         max-width: 100% !important;
         min-height: auto !important;
-        padding: 25px 20px !important;
+        padding: 20px !important;
     }
 
     .standalone-img {
@@ -284,10 +286,9 @@ footer {
     
     .container {
         width: 95%;
-        padding: 15px;
     }
 
     header h1 {
-        font-size: 80px;
+        font-size: 80px; /* הקטנה של הכותרת רק לנייד */
     }
 }
