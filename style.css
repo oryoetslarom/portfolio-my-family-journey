@@ -4,6 +4,8 @@
     --soft-blue: #e3f2fd;
     --dark-text: #455a64;
     --accent-color: #ff80ab;
+    /* משתנה חדש לשליטה ברווח מעל הגלריות - ככל שתשימי מספר שלילי גדול יותר, זה יעלה יותר למעלה */
+    --galleries-gap: -20px; 
 }
 
 /* עיצוב כללי */
@@ -69,7 +71,7 @@ header .subtitle {
 /* ציר זמן */
 .timeline {
     position: relative;
-    padding: 40px 0;
+    padding: 10px 0;
 }
 
 .center-line {
@@ -153,7 +155,14 @@ header .subtitle {
     justify-content: center;
     padding: 20px;
     max-width: 1200px;
-    margin: 40px auto;
+    /* שינוי כאן: המרווח העליון נשלט על ידי המשתנה למעלה */
+    margin: var(--galleries-gap) auto 40px; 
+}
+
+/* ביטול המרווח האוטומטי של הכותרת h2 כדי שלא ידחוף למטה */
+h2 {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
 }
 
 .slider-wrapper {
