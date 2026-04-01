@@ -76,7 +76,7 @@ header .subtitle {
     position: absolute;
     left: 50%;
     top: 0;
-    bottom: 100px; /* מקצר את הקו כדי שלא ייכנס לגלריות */
+    bottom: 100px;
     width: 2px;
     background-color: var(--soft-pink);
     transform: translateX(-50%);
@@ -99,7 +99,6 @@ header .subtitle {
     padding: 20px;
 }
 
-/* כרטיס תוכן */
 .content-card {
     background: #fff;
     padding: 40px 30px;
@@ -115,7 +114,6 @@ header .subtitle {
     min-height: 200px;
 }
 
-/* תמונות עומדות */
 .standalone-img {
     width: 100%;
     max-width: 380px;
@@ -148,13 +146,10 @@ header .subtitle {
     margin-bottom: 10px;
 }
 
-/* --- הגדרות הגלריות (3 בשורה אחת במחשב) --- */
+/* --- הגדרות הגלריות הבסיסיות --- */
 
 .galleries-container {
     display: flex !important;
-    flex-direction: row;      /* מבטיח עמידה בשורה */
-    flex-wrap: nowrap;        /* מונע ירידת שורה במחשב */
-    gap: 20px;
     justify-content: center;
     padding: 20px;
     max-width: 1200px;
@@ -163,9 +158,6 @@ header .subtitle {
 
 .slider-wrapper {
     position: relative;
-    flex: 1;                 /* כל גלריה לוקחת חלק שווה */
-    max-width: 380px;
-    min-width: 0;            /* קריטי כדי שפלקס יעבוד נכון */
     margin-bottom: 40px;
 }
 
@@ -211,7 +203,6 @@ header .subtitle {
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
-/* פוטר */
 footer { 
     text-align: center; 
     padding: 60px 40px; 
@@ -219,18 +210,33 @@ footer {
     margin-top: 50px;
 }
 
-/* --- התאמות לטלפונים ניידים --- */
-@media (max-width: 900px) {
+/* --- הגדרות למחשב (901 פיקסלים ומעלה) --- */
+@media (min-width: 901px) {
     .galleries-container {
-        flex-wrap: wrap;      /* מאפשר ירידת שורה במסכים קטנים */
-        flex-direction: column; 
-        align-items: center;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 20px !important;
     }
 
     .slider-wrapper {
-        width: 100%;
-        max-width: 400px;
-        flex: none;           /* מבטל את החלוקה לשלישים */
+        flex: 1 !important;
+        max-width: 380px !important;
+        min-width: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* --- הגדרות לנייד (עד 900 פיקסלים) --- */
+@media (max-width: 900px) {
+    .galleries-container {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .slider-wrapper {
+        width: 100% !important;
+        max-width: 400px !important;
+        flex: none !important;
     }
 
     .timeline-row {
@@ -239,39 +245,5 @@ footer {
     
     .container {
         width: 95%;
-    }
-    
-/* תיקון כפוי להצגת 3 גלריות בשורה אחת במחשב */
-@media (min-width: 901px) {
-    .galleries-container {
-        display: flex !important;
-        flex-direction: row !important; /* מכריח שורה */
-        flex-wrap: nowrap !important;   /* מונע ירידת שורה */
-        justify-content: space-between !important;
-        gap: 15px !important;
-        max-width: 1200px !important;
-        margin: 40px auto !important;
-        align-items: flex-start !important;
-    }
-
-    .slider-wrapper {
-        flex: 1 !important;             /* כל אחת לוקחת שליש בדיוק */
-        width: 31% !important;         /* מבטיח מקום ל-3 גלריות */
-        max-width: 380px !important;
-        min-width: 0 !important;       /* קריטי למניעת "התנפחות" */
-        margin-bottom: 0 !important;
-    }
-}
-
-/* התאמה לנייד - כאן הן כן צריכות להיות אחת מתחת לשנייה */
-@media (max-width: 900px) {
-    .galleries-container {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-    .slider-wrapper {
-        width: 90% !important;
-        max-width: 400px !important;
     }
 }
