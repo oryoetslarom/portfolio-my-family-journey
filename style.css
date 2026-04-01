@@ -4,8 +4,8 @@
     --soft-blue: #e3f2fd;
     --dark-text: #455a64;
     --accent-color: #ff80ab;
-    /* המשתנה ששולט ברווח - השארתי על -50, תוכלי לשנות אם תרצי */
-    --galleries-gap: -50px; 
+    /* המשתנה ששולט ברווח - אם זה עדיין רחוק מדי, שמי -80px */
+    --galleries-gap: -60px; 
 }
 
 /* עיצוב כללי */
@@ -68,19 +68,17 @@ header .subtitle {
     line-height: 1.6;
 }
 
-/* ציר זמן */
+/* ציר זמן - החזרתי להגדרות המקוריות שלך כדי שלא ישתבש */
 .timeline {
     position: relative;
-    /* הוספת padding תחתון קטן כדי שהנקודה האחרונה לא תיצמד מדי */
-    padding: 10px 0 40px; 
+    padding: 10px 0;
 }
 
 .center-line {
     position: absolute;
     left: 50%;
     top: 0;
-    /* שינוי כאן: הקו מסתיים ב-0 כדי שלא יגלוש אל תוך הגלריות */
-    bottom: 0; 
+    bottom: 100px;
     width: 2px;
     background-color: var(--soft-pink);
     transform: translateX(-50%);
@@ -152,21 +150,23 @@ header .subtitle {
 
 /* --- הגדרות הגלריות הבסיסיות --- */
 
+/* הוספתי רק את ה-margin השלילי כדי להרים את כל הגוש */
 .galleries-container {
     display: flex !important;
     justify-content: center;
     padding: 20px;
     max-width: 1200px;
     margin: var(--galleries-gap) auto 40px; 
-    position: relative; /* מבטיח שהגלריות יהיו מעל הקו */
+    position: relative;
     z-index: 10;
+    background: white; /* מוסיף רקע לבן כדי להסתיר את המשך הקו של הציר */
 }
 
+/* מנטרל את הרווח של הכותרת שדוחף הכל למטה */
 h2 {
     margin-top: 0 !important;
-    margin-bottom: 15px !important;
-    position: relative;
-    z-index: 20; /* מוודא שהכותרת תמיד מעל הקו */
+    margin-bottom: 20px !important;
+    text-align: center;
 }
 
 .slider-wrapper {
@@ -223,7 +223,7 @@ footer {
     margin-top: 50px;
 }
 
-/* --- הגדרות למחשב (901 פיקסלים ומעלה) --- */
+/* --- הגדרות למחשב --- */
 @media (min-width: 901px) {
     .galleries-container {
         flex-direction: row !important;
@@ -239,11 +239,12 @@ footer {
     }
 }
 
-/* --- הגדרות לנייד (עד 900 פיקסלים) --- */
+/* --- הגדרות לנייד --- */
 @media (max-width: 900px) {
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
+        margin-top: -20px; /* בנייד המרווחים שונים אז הקטנתי את המשיכה למעלה */
     }
 
     .slider-wrapper {
