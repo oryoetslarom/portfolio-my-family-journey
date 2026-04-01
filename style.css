@@ -4,8 +4,7 @@
     --soft-blue: #e3f2fd;
     --dark-text: #455a64;
     --accent-color: #ff80ab;
-    /* המשתנה ששולט ברווח - אם זה עדיין רחוק מדי, שמי -80px */
-    --galleries-gap: -60px; 
+    --galleries-gap: -20px; 
 }
 
 /* עיצוב כללי */
@@ -33,8 +32,8 @@ header h1 {
 }
 
 header .subtitle {
-    font-family: 'Varela Round', sans-serif; 
-    font-size: clamp(24px, 5vw, 40px);
+    font-family: 'Amatic SC', sans-serif; 
+    font-size: clamp(24px, 5vw, 60px);
     margin-top: 20px;
 }
 
@@ -68,7 +67,7 @@ header .subtitle {
     line-height: 1.6;
 }
 
-/* ציר זמן - החזרתי להגדרות המקוריות שלך כדי שלא ישתבש */
+/* ציר זמן */
 .timeline {
     position: relative;
     padding: 10px 0;
@@ -107,13 +106,13 @@ header .subtitle {
     border-radius: 20px;
     box-shadow: 0 12px 35px rgba(0,0,0,0.2);
     text-align: center;
-    width: 90%;
+    width: 95%; /* הגדלתי מעט לנייד */
     max-width: 400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 200px;
+    min-height: 150px; /* הקטנתי מעט לנייד */
 }
 
 .standalone-img {
@@ -148,25 +147,18 @@ header .subtitle {
     margin-bottom: 10px;
 }
 
-/* --- הגדרות הגלריות הבסיסיות --- */
-
-/* הוספתי רק את ה-margin השלילי כדי להרים את כל הגוש */
+/* --- הגדרות הגלריות --- */
 .galleries-container {
     display: flex !important;
     justify-content: center;
     padding: 20px;
     max-width: 1200px;
     margin: var(--galleries-gap) auto 40px; 
-    position: relative;
-    z-index: 10;
-    background: white; /* מוסיף רקע לבן כדי להסתיר את המשך הקו של הציר */
 }
 
-/* מנטרל את הרווח של הכותרת שדוחף הכל למטה */
 h2 {
     margin-top: 0 !important;
-    margin-bottom: 20px !important;
-    text-align: center;
+    margin-bottom: 10px !important;
 }
 
 .slider-wrapper {
@@ -185,9 +177,7 @@ h2 {
     scrollbar-width: none;
 }
 
-.slider::-webkit-scrollbar {
-    display: none;
-}
+.slider::-webkit-scrollbar { display: none; }
 
 .slider img {
     flex: 1 0 100%; 
@@ -223,14 +213,13 @@ footer {
     margin-top: 50px;
 }
 
-/* --- הגדרות למחשב --- */
+/* --- הגדרות למחשב (901 פיקסלים ומעלה) --- */
 @media (min-width: 901px) {
     .galleries-container {
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         gap: 20px !important;
     }
-
     .slider-wrapper {
         flex: 1 !important;
         max-width: 380px !important;
@@ -239,25 +228,46 @@ footer {
     }
 }
 
-/* --- הגדרות לנייד --- */
+/* --- הגדרות לנייד (עד 900 פיקסלים) - תיקון הציר המרכזי --- */
 @media (max-width: 900px) {
+    /* משאיר את ה-Grid בדיוק כמו במחשב */
+    .timeline-row {
+        grid-template-columns: 1fr 40px 1fr; /* הקטנתי מעט את עמודת הציר מ-80 ל-40 שיתאים למסך צר */
+        margin-bottom: 40px; /* רווח קטן יותר בין שורות בנייד */
+    }
+
+    /* הקטנת רווחים פנימיים כדי שהתוכן לא יימחץ */
+    .text-column, .image-column {
+        padding: 5px;
+    }
+
+    .content-card {
+        padding: 15px 10px;
+    }
+
+    /* התאמת גודל טקסט בנייד */
+    .content-card p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .date {
+        font-size: 14px;
+    }
+
+    .container {
+        width: 98%; /* ניצול מקסימלי של רוחב המסך */
+        padding: 5px;
+    }
+
+    /* סידור הגלריות בנייד */
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
-        margin-top: -20px; /* בנייד המרווחים שונים אז הקטנתי את המשיכה למעלה */
     }
-
     .slider-wrapper {
         width: 100% !important;
-        max-width: 400px !important;
+        max-width: 320px !important;
         flex: none !important;
-    }
-
-    .timeline-row {
-        grid-template-columns: 1fr 40px 1fr;
-    }
-    
-    .container {
-        width: 95%;
     }
 }
