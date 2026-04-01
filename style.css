@@ -248,10 +248,42 @@ footer {
         flex: none !important;
     }
 
-    .timeline-row {
-        grid-template-columns: 1fr 40px 1fr;
+    /* תיקון הקו והנקודות בנייד */
+    .center-line {
+        left: 20px !important;
+        transform: none !important;
     }
-    
+
+    .timeline-row {
+        grid-template-columns: 40px 1fr !important; /* עמודה אחת לנקודה ואחת לתוכן */
+        gap: 10px;
+        margin-bottom: 50px;
+    }
+
+    .dot-column {
+        grid-column: 1 !important;
+        grid-row: 1 / span 2;
+        justify-content: center;
+        padding-top: 20px;
+    }
+
+    .text-column, .image-column {
+        grid-column: 2 !important;
+        width: 100% !important;
+        padding: 5px !important;
+        display: block !important;
+    }
+
+    .content-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: right !important;
+    }
+
+    .standalone-img {
+        max-width: 100% !important;
+    }
+
     .container {
         width: 95%;
     }
