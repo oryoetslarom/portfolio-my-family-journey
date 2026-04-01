@@ -240,4 +240,38 @@ footer {
     .container {
         width: 95%;
     }
+    
+/* תיקון כפוי להצגת 3 גלריות בשורה אחת במחשב */
+@media (min-width: 901px) {
+    .galleries-container {
+        display: flex !important;
+        flex-direction: row !important; /* מכריח שורה */
+        flex-wrap: nowrap !important;   /* מונע ירידת שורה */
+        justify-content: space-between !important;
+        gap: 15px !important;
+        max-width: 1200px !important;
+        margin: 40px auto !important;
+        align-items: flex-start !important;
+    }
+
+    .slider-wrapper {
+        flex: 1 !important;             /* כל אחת לוקחת שליש בדיוק */
+        width: 31% !important;         /* מבטיח מקום ל-3 גלריות */
+        max-width: 380px !important;
+        min-width: 0 !important;       /* קריטי למניעת "התנפחות" */
+        margin-bottom: 0 !important;
+    }
+}
+
+/* התאמה לנייד - כאן הן כן צריכות להיות אחת מתחת לשנייה */
+@media (max-width: 900px) {
+    .galleries-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .slider-wrapper {
+        width: 90% !important;
+        max-width: 400px !important;
+    }
 }
