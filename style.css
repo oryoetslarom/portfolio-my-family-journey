@@ -106,13 +106,13 @@ header .subtitle {
     border-radius: 20px;
     box-shadow: 0 12px 35px rgba(0,0,0,0.2);
     text-align: center;
-    width: 95%; /* הגדלתי מעט לנייד */
+    width: 95%;
     max-width: 400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 150px; /* הקטנתי מעט לנייד */
+    min-height: 150px;
 }
 
 .standalone-img {
@@ -228,24 +228,34 @@ footer {
     }
 }
 
-/* --- הגדרות לנייד (עד 900 פיקסלים) - תיקון הציר המרכזי --- */
+/* --- הגדרות לנייד (עד 900 פיקסלים) --- */
 @media (max-width: 900px) {
-    /* משאיר את ה-Grid בדיוק כמו במחשב */
     .timeline-row {
-        grid-template-columns: 1fr 40px 1fr; /* הקטנתי מעט את עמודת הציר מ-80 ל-40 שיתאים למסך צר */
-        margin-bottom: 40px; /* רווח קטן יותר בין שורות בנייד */
+        /* תיקון: 20px במרכז כדי שהנקודה תהיה בול על הקו בלי לברוח */
+        grid-template-columns: 1fr 20px 1fr !important; 
+        margin-bottom: 40px;
+        gap: 0;
     }
 
-    /* הקטנת רווחים פנימיים כדי שהתוכן לא יימחץ */
+    /* תיקון: איפוס פדינג בעמודות כדי שלא ידחפו את הנקודה הצידה */
     .text-column, .image-column {
-        padding: 5px;
+        padding: 5px !important;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .dot-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .content-card {
         padding: 15px 10px;
+        width: 100%;
+        font-size: 14px;
     }
 
-    /* התאמת גודל טקסט בנייד */
     .content-card p {
         font-size: 14px;
         line-height: 1.4;
@@ -256,15 +266,15 @@ footer {
     }
 
     .container {
-        width: 98%; /* ניצול מקסימלי של רוחב המסך */
+        width: 98%;
         padding: 5px;
     }
 
-    /* סידור הגלריות בנייד */
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
     }
+    
     .slider-wrapper {
         width: 100% !important;
         max-width: 320px !important;
