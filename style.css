@@ -226,56 +226,68 @@ footer {
         margin-bottom: 0 !important;
     }
 }
-
 /* --- הגדרות לנייד (עד 900 פיקסלים) --- */
 @media (max-width: 900px) {
+    
+    /* 1. יצירת רווח (אוויר) בצדדים לכל האתר */
     .container {
-        width: 85% !important; /* יצירת רווח בצדדים בתוך הנייד */
-        padding: 15px !important;
+        width: 88% !important; /* משאיר רווח נקי ונעים של 6% מכל צד */
+        padding: 20px 15px !important; /* רווח פנימי לטקסט */
         margin: -40px auto 30px !important;
+        box-sizing: border-box;
     }
 
-    .timeline-row {
-        grid-template-columns: 1fr 30px 1fr !important; /* רוחב עמודה ששומר על הנקודה */
-        margin-bottom: 40px;
-        gap: 0;
-    }
-
+    /* 2. מניעת מחיצת העיגולים - נעילת גודל */
     .timeline-dot {
         width: 20px !important;
         height: 20px !important;
-        flex-shrink: 0 !important; /* מונע מהעיגול להפוך לאליפסה */
-        display: block;
+        min-width: 20px !important; /* מונע הפיכה לאליפסה */
+        min-height: 20px !important;
+        flex-shrink: 0 !important;
+        border-radius: 50% !important;
     }
 
+    /* 3. סידור עמודות ציר הזמן עם מרווח נכון */
+    .timeline-row {
+        /* העמודה האמצעית גדלה ל-40px כדי לתת לנקודה מקום לנשום */
+        grid-template-columns: 1fr 40px 1fr !important; 
+        margin-bottom: 50px;
+        width: 100%;
+    }
+
+    /* 4. הוספת רווח פנימי לטקסט ולתמונות שלא ייגעו בעיגול */
     .text-column, .image-column {
-        padding: 5px !important;
+        padding: 0 10px !important; 
         box-sizing: border-box;
     }
 
     .content-card {
-        padding: 15px 10px;
-        width: 100%;
-        min-height: auto;
+        padding: 20px 15px !important;
+        width: 100% !important;
+        box-sizing: border-box;
     }
 
-    .content-card p {
-        font-size: 14px;
-        line-height: 1.4;
-    }
-    
-    .date {
-        font-size: 14px;
+    /* 5. התאמת כותרות שלא יחרגו מהצדדים */
+    header h1 {
+        font-size: 70px !important;
+        padding: 0 10px;
     }
 
+    .main-title {
+        font-size: 28px !important;
+        margin-bottom: 25px;
+    }
+
+    /* 6. התאמת הגלריות */
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
+        padding: 0 !important;
     }
     
     .slider-wrapper {
-        width: 100% !important;
+        width: 95% !important;
         max-width: 320px !important;
-        flex: none !important;
+        margin-bottom: 40px !important;
     }
 }
