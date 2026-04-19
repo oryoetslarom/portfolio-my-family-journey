@@ -41,7 +41,7 @@ header .subtitle {
     max-width: 1200px;
     margin: -40px auto 50px;
     background: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     width: 90%;
@@ -136,7 +136,6 @@ header .subtitle {
     background: white;
     border: 4px solid var(--accent-color);
     border-radius: 50%;
-    flex-shrink: 0; /* מונע מהנקודה להפוך לאליפסה */
 }
 
 .date {
@@ -231,26 +230,27 @@ footer {
 /* --- הגדרות לנייד (עד 900 פיקסלים) --- */
 @media (max-width: 900px) {
     .container {
-        width: 88%; /* הוספת רווח משמעותי בצדדים בתוך הטלפון */
-        padding: 15px;
-        margin: -40px auto 30px;
+        width: 85% !important; /* יצירת רווח בצדדים בתוך הנייד */
+        padding: 15px !important;
+        margin: -40px auto 30px !important;
     }
 
     .timeline-row {
-        grid-template-columns: 1fr 30px 1fr !important; /* הגדלה קלה ל-30px כדי לתת לנקודה מרווח נשימה */
+        grid-template-columns: 1fr 30px 1fr !important; /* רוחב עמודה ששומר על הנקודה */
         margin-bottom: 40px;
         gap: 0;
+    }
+
+    .timeline-dot {
+        width: 20px !important;
+        height: 20px !important;
+        flex-shrink: 0 !important; /* מונע מהעיגול להפוך לאליפסה */
+        display: block;
     }
 
     .text-column, .image-column {
         padding: 5px !important;
         box-sizing: border-box;
-    }
-
-    .timeline-dot {
-        width: 18px; /* הקטנה קלה לנייד כדי שלא תימחץ */
-        height: 18px;
-        flex-shrink: 0; /* חובה כדי שיישאר עיגול מושלם */
     }
 
     .content-card {
@@ -271,16 +271,11 @@ footer {
     .galleries-container {
         flex-direction: column !important;
         align-items: center !important;
-        width: 100%;
     }
     
     .slider-wrapper {
         width: 100% !important;
-        max-width: 300px !important;
+        max-width: 320px !important;
         flex: none !important;
-    }
-
-    header h1 {
-        font-size: 80px; /* מניעת חריגה של הטקסט בנייד */
     }
 }
